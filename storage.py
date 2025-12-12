@@ -9,6 +9,7 @@ logger = init_logger()
 
 
 def save_image(frame, valid_barcodes):
+    print("开始存储图片...")
     temp_path = os.path.join(STORAGE_ROOT, f"temp_{int(time.time())}.jpg")
     os.makedirs(STORAGE_ROOT, exist_ok=True)
     cv2.imwrite(temp_path, frame, [cv2.IMWRITE_JPEG_QUALITY, IMAGE_QUALITY])

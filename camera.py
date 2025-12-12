@@ -42,6 +42,7 @@ def is_frame_static(current_frame, last_frame):
         non_zero = np.count_nonzero(diff)
         total = diff.shape[0] * diff.shape[1]
         change_rate = non_zero / total
+        # print("change_rate",change_rate)
         return change_rate <= STATIC_THRESHOLD
     except Exception as e:
         logger.debug(f"is_frame_static 异常：{e}")

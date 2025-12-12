@@ -5,8 +5,8 @@ from pathlib import Path
 load_dotenv()
 
 # 识别参数
-RECOGNITION_INTERVAL = float(os.getenv("RECOGNITION_INTERVAL", 0.4))
-STATIC_THRESHOLD = float(os.getenv("STATIC_THRESHOLD", 10.0)) / 100  # 转为小数
+RECOGNITION_INTERVAL = float(os.getenv("RECOGNITION_INTERVAL", 0))
+STATIC_THRESHOLD = float(os.getenv("STATIC_THRESHOLD", 90.0)) / 100  # 转为小数
 SENSITIVITY = os.getenv("RECOGNITION_SENSITIVITY", "high")
 
 # 数据格式
@@ -21,7 +21,7 @@ STORAGE_ROOT = str(PROJECT_ROOT / "pic")
 IMAGE_QUALITY = int(os.getenv("IMAGE_QUALITY", 85))
 
 # 新增：测试模式配置（可在 .env 中设置 TEST_MODE=1 或 TEST_MODE=true，并可指定 TST_DIR）
-TEST_MODE = os.getenv("TEST_MODE", "1").lower() in ("1", "true", "yes")
+TEST_MODE = os.getenv("TEST_MODE", "0").lower() in ("1", "true", "yes")
 TST_DIR = os.getenv("TST_DIR", str(PROJECT_ROOT / "tst"))
 # 确保目录存在（避免运行时报错）
 os.makedirs(STORAGE_ROOT, exist_ok=True)
@@ -29,7 +29,7 @@ if TEST_MODE:
     os.makedirs(TST_DIR, exist_ok=True)
 
 # 多帧验证与显示保持
-FRAME_VALIDATE_COUNT = int(os.getenv("FRAME_VALIDATE_COUNT", 2))
+FRAME_VALIDATE_COUNT = int(os.getenv("FRAME_VALIDATE_COUNT", 1))
 DISPLAY_HOLD_SECONDS = float(os.getenv("DISPLAY_HOLD_SECONDS", 2.0))
 
 # 日志目录
